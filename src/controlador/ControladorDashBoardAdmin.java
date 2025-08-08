@@ -36,7 +36,7 @@ public class ControladorDashBoardAdmin {
     //Manejador eventos
     public void manejadorEventos(){
         this.vista.btnUsuarios.addActionListener(e->mostrarPanelUsuarios());
-        this.vista.btnRolUsuarios.addActionListener(e->mostrarPanelRolUsuario());
+        this.vista.btnProductos.addActionListener(e->mostrarPanelRolUsuario());
     }
     //Metodo para mostrar el panel usuarios
     public void mostrarPanelUsuarios(){
