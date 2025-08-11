@@ -29,8 +29,9 @@ public class VistaDashBoardAdmin extends javax.swing.JFrame {
         panelMenu = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        btnRolUsuarios = new javax.swing.JButton();
+        btnProductos = new javax.swing.JButton();
         btnUsuarios = new javax.swing.JButton();
+        btnRolUsuarios = new javax.swing.JButton();
         panelEnca = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         panelContenedor = new javax.swing.JPanel();
@@ -49,17 +50,17 @@ public class VistaDashBoardAdmin extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logmai.png"))); // NOI18N
         panelMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
-        btnRolUsuarios.setBackground(new java.awt.Color(204, 0, 204));
-        btnRolUsuarios.setFont(new java.awt.Font("Eras Bold ITC", 0, 18)); // NOI18N
-        btnRolUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/enderman_25744.png"))); // NOI18N
-        btnRolUsuarios.setText("RolUsuario");
-        btnRolUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRolUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        btnProductos.setBackground(new java.awt.Color(51, 255, 255));
+        btnProductos.setFont(new java.awt.Font("Eras Bold ITC", 0, 18)); // NOI18N
+        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/allay.jpg"))); // NOI18N
+        btnProductos.setText("Productos");
+        btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRolUsuariosActionPerformed(evt);
+                btnProductosActionPerformed(evt);
             }
         });
-        panelMenu.add(btnRolUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 200, 70));
+        panelMenu.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 200, 70));
 
         btnUsuarios.setBackground(new java.awt.Color(0, 204, 0));
         btnUsuarios.setFont(new java.awt.Font("Eras Bold ITC", 0, 18)); // NOI18N
@@ -73,6 +74,18 @@ public class VistaDashBoardAdmin extends javax.swing.JFrame {
             }
         });
         panelMenu.add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 200, 70));
+
+        btnRolUsuarios.setBackground(new java.awt.Color(204, 0, 204));
+        btnRolUsuarios.setFont(new java.awt.Font("Eras Bold ITC", 0, 18)); // NOI18N
+        btnRolUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/enderman_25744.png"))); // NOI18N
+        btnRolUsuarios.setText("RolUsuario");
+        btnRolUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRolUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRolUsuariosActionPerformed(evt);
+            }
+        });
+        panelMenu.add(btnRolUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 200, 70));
 
         getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -103,13 +116,17 @@ public class VistaDashBoardAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRolUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRolUsuariosActionPerformed
+    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRolUsuariosActionPerformed
+    }//GEN-LAST:event_btnProductosActionPerformed
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUsuariosActionPerformed
+
+    private void btnRolUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRolUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRolUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,6 +164,7 @@ public class VistaDashBoardAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnProductos;
     public javax.swing.JButton btnRolUsuarios;
     public javax.swing.JButton btnUsuarios;
     private javax.swing.JLabel jLabel1;
