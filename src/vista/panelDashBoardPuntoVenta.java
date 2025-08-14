@@ -29,14 +29,13 @@ public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
         panelMenu = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaproducto = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         txtSubtotal = new javax.swing.JTextField();
         txtTola = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtIVA = new javax.swing.JTextField();
+        txtbuscraid = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         panelEnca = new javax.swing.JPanel();
@@ -44,13 +43,16 @@ public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
         panelMenu1 = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
-        btnAgregar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
-        Borrarbtn = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAgregarproducto = new javax.swing.JButton();
+        btnCancelarVenta = new javax.swing.JButton();
+        BorrarProductobtn = new javax.swing.JButton();
+        NuevaVentabtn = new javax.swing.JButton();
         Editarbtn = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
+        btnSalirVenta = new javax.swing.JButton();
         ticketbtn = new javax.swing.JButton();
+        txtIVA1 = new javax.swing.JTextField();
+        BuscarIdbtn = new javax.swing.JButton();
+        FinalizarVentaBTN = new javax.swing.JButton();
 
         panelMenu.setBackground(new java.awt.Color(102, 102, 255));
         panelMenu.setMinimumSize(new java.awt.Dimension(170, 160));
@@ -62,14 +64,6 @@ public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logmai.png"))); // NOI18N
         panelMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
-
-        jTextField4.setText("Codigo del producto");
-        jTextField4.setAutoscrolls(false);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
 
         tablaproducto.setBackground(new java.awt.Color(102, 102, 102));
         tablaproducto.setForeground(new java.awt.Color(102, 102, 102));
@@ -86,7 +80,7 @@ public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tablaproducto);
 
-        jLabel4.setText("Producto:");
+        jLabel4.setText("Buscar producto por id:");
 
         txtSubtotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,9 +96,9 @@ public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
 
         jLabel2.setText("I.V.A");
 
-        txtIVA.addActionListener(new java.awt.event.ActionListener() {
+        txtbuscraid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIVAActionPerformed(evt);
+                txtbuscraidActionPerformed(evt);
             }
         });
 
@@ -130,43 +124,43 @@ public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logmai.png"))); // NOI18N
         panelMenu1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
-        btnAgregar.setBackground(new java.awt.Color(102, 102, 255));
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/registro.png"))); // NOI18N
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarproducto.setBackground(new java.awt.Color(102, 102, 255));
+        btnAgregarproducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/registro.png"))); // NOI18N
+        btnAgregarproducto.setText("Agregar");
+        btnAgregarproducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                btnAgregarproductoActionPerformed(evt);
             }
         });
-        panelMenu1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 160, -1));
+        panelMenu1.add(btnAgregarproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 160, -1));
 
-        btnCancelar.setBackground(new java.awt.Color(102, 102, 255));
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/cancelar.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarVenta.setBackground(new java.awt.Color(102, 102, 255));
+        btnCancelarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/cancelar.png"))); // NOI18N
+        btnCancelarVenta.setText("Cancelar");
+        btnCancelarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnCancelarVentaActionPerformed(evt);
             }
         });
-        panelMenu1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 160, -1));
+        panelMenu1.add(btnCancelarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 160, -1));
 
-        Borrarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/eliminar.png"))); // NOI18N
-        Borrarbtn.setText("Borrar");
-        Borrarbtn.addActionListener(new java.awt.event.ActionListener() {
+        BorrarProductobtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/eliminar.png"))); // NOI18N
+        BorrarProductobtn.setText("Borrar");
+        BorrarProductobtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BorrarbtnActionPerformed(evt);
+                BorrarProductobtnActionPerformed(evt);
             }
         });
-        panelMenu1.add(Borrarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 160, -1));
+        panelMenu1.add(BorrarProductobtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 160, -1));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/nuevo.png"))); // NOI18N
-        jButton4.setText("Nuevo");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        NuevaVentabtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/nuevo.png"))); // NOI18N
+        NuevaVentabtn.setText("Nuevo");
+        NuevaVentabtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                NuevaVentabtnActionPerformed(evt);
             }
         });
-        panelMenu1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 160, -1));
+        panelMenu1.add(NuevaVentabtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 160, -1));
 
         Editarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/editar.png"))); // NOI18N
         Editarbtn.setText("Editar");
@@ -177,17 +171,27 @@ public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
         });
         panelMenu1.add(Editarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 160, -1));
 
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/login.png"))); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+        btnSalirVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/login.png"))); // NOI18N
+        btnSalirVenta.setText("Salir");
+        btnSalirVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
+                btnSalirVentaActionPerformed(evt);
             }
         });
-        panelMenu1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 160, -1));
+        panelMenu1.add(btnSalirVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 160, -1));
 
         ticketbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/factura.png"))); // NOI18N
         ticketbtn.setText("Generar Ticket");
+
+        txtIVA1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIVA1ActionPerformed(evt);
+            }
+        });
+
+        BuscarIdbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/buscar.png"))); // NOI18N
+
+        FinalizarVentaBTN.setText("Finalizar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -201,33 +205,42 @@ public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
                     .addComponent(panelEnca, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(ticketbtn)
-                                .addGap(143, 143, 143)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(67, 67, 67)
-                                        .addComponent(txtIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(38, 38, 38)
-                                        .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(41, 41, 41)
-                                .addComponent(txtTola, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47))
+                                .addGap(36, 36, 36)
+                                .addComponent(ticketbtn))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(67, 67, 67)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(59, 59, 59)
+                                .addComponent(FinalizarVentaBTN)))
+                        .addGap(143, 143, 143)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(193, 193, 193))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(41, 41, 41)
+                        .addComponent(txtTola, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 91, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtbuscraid, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BuscarIdbtn)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addGap(134, 134, 134))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(673, Short.MAX_VALUE)
+                    .addComponent(txtIVA1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(259, 259, 259)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,82 +248,90 @@ public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
                 .addComponent(panelEnca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(138, 138, 138)
-                        .addComponent(ticketbtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BuscarIdbtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTola, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtIVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
+                                .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(74, 74, 74))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addGap(74, 74, 74))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtbuscraid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(133, 133, 133)
+                        .addComponent(ticketbtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(FinalizarVentaBTN)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addComponent(panelMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(472, Short.MAX_VALUE)
+                    .addComponent(txtIVA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(146, 146, 146)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void btnSalirVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirVentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_btnSalirVentaActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+    private void NuevaVentabtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevaVentabtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSalirActionPerformed
+    }//GEN-LAST:event_NuevaVentabtnActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void BorrarProductobtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarProductobtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void BorrarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarbtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BorrarbtnActionPerformed
+    }//GEN-LAST:event_BorrarProductobtnActionPerformed
 
     private void EditarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarbtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EditarbtnActionPerformed
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void btnAgregarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarproductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarActionPerformed
+    }//GEN-LAST:event_btnAgregarproductoActionPerformed
 
     private void txtTolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTolaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTolaActionPerformed
 
-    private void txtIVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIVAActionPerformed
+    private void txtbuscraidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscraidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIVAActionPerformed
+    }//GEN-LAST:event_txtbuscraidActionPerformed
 
     private void txtSubtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubtotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSubtotalActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnCancelarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarVentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }//GEN-LAST:event_btnCancelarVentaActionPerformed
+
+    private void txtIVA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIVA1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIVA1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Borrarbtn;
-    private javax.swing.JButton Editarbtn;
-    private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnSalir;
-    private javax.swing.JButton jButton4;
+    public javax.swing.JButton BorrarProductobtn;
+    public javax.swing.JButton BuscarIdbtn;
+    public javax.swing.JButton Editarbtn;
+    public javax.swing.JButton FinalizarVentaBTN;
+    private javax.swing.JButton NuevaVentabtn;
+    public javax.swing.JButton btnAgregarproducto;
+    public javax.swing.JButton btnCancelarVenta;
+    public javax.swing.JButton btnSalirVenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -321,14 +342,14 @@ public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel panelEnca;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelMenu1;
-    private javax.swing.JTable tablaproducto;
-    private javax.swing.JButton ticketbtn;
-    private javax.swing.JTextField txtIVA;
-    private javax.swing.JTextField txtSubtotal;
-    private javax.swing.JTextField txtTola;
+    public javax.swing.JTable tablaproducto;
+    public javax.swing.JButton ticketbtn;
+    public javax.swing.JTextField txtIVA1;
+    public javax.swing.JTextField txtSubtotal;
+    public javax.swing.JTextField txtTola;
+    public javax.swing.JTextField txtbuscraid;
     // End of variables declaration//GEN-END:variables
 }
