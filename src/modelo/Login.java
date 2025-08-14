@@ -4,13 +4,18 @@
  */
 package modelo;
 
+import com.mysql.cj.jdbc.CallableStatement;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 /**
  *
  * @author J.A.R.R
  */
-public class Login {
+public class Login extends ConexionBD {
     //Atruibutos
     private int idLogin;
     private String nombreLogin;
@@ -22,6 +27,8 @@ public class Login {
     private Usuario usuario;
     private RolUsuario rolUsuario;
     
+    CallableStatement cstm;
+    ResultSet result;
     //Constructor
     public Login() {
         //Crear objetos usuario y rol usuario
@@ -105,7 +112,46 @@ public class Login {
         
     }
     
-    //Metodo para validar el inicio de sesion
+    //Metodo para validar el inicio de sesion con DB
+    public boolean validarLogin(){
+        if (super.openConectionBD()) {
+            try{
+                //llamar al procedimiento almacenado
+                this.cstm=(CallableStatement) super.getConexion().prepareCall("call bd_sistema_login.sp_validar_login(?, ?);");
+                this.cstm.setString(1,this.getUsuario().getNombreUsuario());
+                this.cstm.setString(2, this.getPasswordLogin());
+                //ejecuta el procedimiento
+                this.result=this.cstm.executeQuery();
+                
+                boolean existeUsuario=false;
+                
+                //Recorrer la consulta
+                while (this.result.next()){
+                    existeUsuario=true;
+                    //agregar los datos de la consulta a los atributos del RolUsuario
+                    this.getRolUsuario().setTipoRolUsuario(this.result.getString("tipoRolUsuario"));
+                }
+                //cerrar conexion
+                this.cstm.close();
+                super.getConexion().close();
+                
+                if(existeUsuario){
+                    super.setMensajes("Si existe el usuario");
+                    return true;
+                }else{
+                    super.setMensajes("No existe el usuario");
+                    return false;
+                }
+            }catch (SQLException e){
+                super.setMensajes("Error de SQL"+e.getMessage());  
+            } 
+        }else{
+            JOptionPane.showMessageDialog(null,super.getMensajes());
+        }
+        return false;
+    }
+    
+    /*Metodo para validar el inicio de sesion
     public boolean validarLogin(){
         //VAriables para el usuario,password y tipo usuario
         String nameUser="Jose";
@@ -117,11 +163,9 @@ public class Login {
             return true;
         } else {
             return false;
-        }
+        }*/
         
         
     }
         
     
-    
-}

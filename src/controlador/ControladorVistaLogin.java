@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import modelo.Login;
 import vista.VistaDashBoardAdmin;
 import vista.Vistalogin;
+import vista.panelDashBoardPuntoVenta;
 
 /**
  *
@@ -36,30 +37,44 @@ public class ControladorVistaLogin {
         this.vista.btnCancelar.addActionListener(e->cancelar());
     }
     
-    //Metodo para iniciar sesion
-    public void iniciarSesion(){
-        //
-        String user=this.vista.txtUsuario.getText();
-        String pasword=String.valueOf(this.vista.txtPassword.getPassword());
-        String tipeUser="admin";
-        
-        
-        this.modelo.getUsuario().setNombreUsuario(user);
-        this.modelo.setPasswordLogin(pasword);
-        this.modelo.getRolUsuario().setTipoRolUsuario(tipeUser);
-        
-        //Validar login
-        if (this.modelo.validarLogin()) {
-            //JOptionPane.showMessageDialog(this.vista, "Ususario y/o Password correcto");
-            // Crear objeto de ñla vista dashboard
-            ControladorDashBoardAdmin vistaDashBoardAdmin=new ControladorDashBoardAdmin();
-            vistaDashBoardAdmin.getVista().setVisible(true);
-            //Ocultar la vista login
-            this.vista.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this.vista, "Ususario y/o Password incorrecto");
-        }
+    // Metodo para iniciar sesion
+public void iniciarSesion() {
+    String user = this.vista.txtUsuario.getText();
+    String password = String.valueOf(this.vista.txtPassword.getPassword());
+
+    // Validar campos vacíos
+    if (user.isEmpty() || password.isEmpty()) {
+        JOptionPane.showMessageDialog(this.vista, "Por favor, ingrese usuario y contraseña");
+        return;
     }
+
+    // Pasar datos al modelo
+    this.modelo.getUsuario().setNombreUsuario(user);
+    this.modelo.setPasswordLogin(password);
+
+    // Validar login contra BD
+    if (this.modelo.validarLogin()) {
+        String rol = this.modelo.getRolUsuario().getTipoRolUsuario();
+
+        // Abrir ventana según el rol
+        if ("cliente".equalsIgnoreCase(rol)) {
+            panelDashBoardPuntoVenta vistaCliente = new panelDashBoardPuntoVenta();
+            vistaCliente.setVisible(true);
+        } else if ("admin".equalsIgnoreCase(rol) || "administrador".equalsIgnoreCase(rol)) {
+            ControladorDashBoardAdmin vistaDashBoardAdmin = new ControladorDashBoardAdmin();
+            vistaDashBoardAdmin.getVista().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this.vista, "Rol no reconocido: " + rol);
+            return;
+        }
+
+        // Cerrar vista login
+        this.vista.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this.vista, "Usuario y/o Password incorrecto");
+    }
+}
+
     
     //Metodo para cancelar
     public void cancelar(){
@@ -76,3 +91,4 @@ public class ControladorVistaLogin {
     
     
 }
+
