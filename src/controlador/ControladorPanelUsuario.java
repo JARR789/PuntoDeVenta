@@ -100,37 +100,32 @@ public class ControladorPanelUsuario {
         }
     }//Fin del metodo registrar
     
-    //Mettodo para editar usuario
-    public void editar(){
-          //Validar cajas de texto
-        if(validarCajasTexto()){
-            
-           
-        //Obtener los datos de la vista y agregarlos al modelo
-        this.modelo.setIdUsuario(Integer.parseInt(this.vista.paneIdusuario.getText()));
-        this.modelo.setNombreUsuario(this.vista.paneNombre.getText());
-        this.modelo.setApPaternoUsuario(this.vista.paneApellidoPaterno.getText());
-        this.modelo.setApMaternoUsuario(this.vista.paneApellidoMaterno.getText());
-        this.modelo.setEmailUsuario(this.vista.paneEmail.getText());
-        this.modelo.setTelefonoCelular(this.vista.paneTelefono.getText());
-        
-        if (this.modelo.modificar(this.modelo.getIdUsuario())) {
-            JOptionPane.showMessageDialog(this.vista, "Los datos del usuario se modificaron correctamente");
-            //Limpiar cajas de texto
-            limpiarCajasTexto();
-        } else {
-             JOptionPane.showMessageDialog(this.vista, "Los datos del Rol usuario NO se modificaron...");
+    public void editar() {
+    if (validarCajasTexto()) {
+        try {
+            this.modelo.setIdUsuario(Integer.parseInt(this.vista.paneIdusuario.getText()));
+            this.modelo.setNombreUsuario(this.vista.paneNombre.getText());
+            this.modelo.setApPaternoUsuario(this.vista.paneApellidoPaterno.getText());
+            this.modelo.setApMaternoUsuario(this.vista.paneApellidoMaterno.getText());
+            this.modelo.setEmailUsuario(this.vista.paneEmail.getText());
+            this.modelo.setTelefonoCelular(this.vista.paneTelefono.getText());
+
+            if (this.modelo.modificar(this.modelo.getIdUsuario())) {
+                JOptionPane.showMessageDialog(this.vista, "Los datos del usuario se modificaron correctamente");
+                limpiarCajasTexto();
+            } else {
+                JOptionPane.showMessageDialog(this.vista, "Los datos del usuario NO se modificaron...");
+            }
+            LlenarTablaUsuarios();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this.vista, "El ID debe ser un número entero válido");
+            this.vista.paneIdusuario.requestFocus();
         }
-                
-        //LLamar al metodo llenar tabla usuarios
-        LlenarTablaUsuarios();
-        
-        }else{
-            JOptionPane.showMessageDialog(this.vista, "Faltan capturar algunos datos");
-        }
-        
-        
-    }//Fin del metodo editar
+    } else {
+        JOptionPane.showMessageDialog(this.vista, "Faltan capturar algunos datos");
+    }
+}
+
     
     //Metodo para eliminar usuario
      public void eliminar(){
@@ -165,26 +160,26 @@ public class ControladorPanelUsuario {
     }//Fin del metodo eliminar
      
      //Metodo para buscar por id
-     public void buscarId(){
-         //Obtener los datos de la vista y agregarlos al modelo
-         this.modelo.setIdUsuario(Integer.parseInt(this.vista.paneIdusuario.getText()));
-         
-         if (this.modelo.BuscarPorId(this.modelo.getIdUsuario())) {
-             //Agregar los datos a las cajas de texto
-             this.vista.paneNombre.setText(this.modelo.getNombreUsuario());
-             this.vista.paneApellidoPaterno.setText(this.modelo.getApPaternoUsuario());
-             this.vista.paneApellidoMaterno.setText(this.modelo.getApMaternoUsuario());
-             this.vista.paneEmail.setText(this.modelo.getEmailUsuario());
-             this.vista.paneTelefono.setText(this.modelo.getTelefonoCelular());
-         } else {
-             JOptionPane.showMessageDialog(this.vista, "No se encontraron los datos del usuario");
-                     
-        //LLamar al metodo llenar tabla usuarios
-        LlenarTablaUsuarios();
-        
-         }
-         
-     }
+  public void buscarId() {
+    try {
+        this.modelo.setIdUsuario(Integer.parseInt(this.vista.paneIdusuario.getText()));
+
+        if (this.modelo.BuscarPorId(this.modelo.getIdUsuario())) {
+            this.vista.paneNombre.setText(this.modelo.getNombreUsuario());
+            this.vista.paneApellidoPaterno.setText(this.modelo.getApPaternoUsuario());
+            this.vista.paneApellidoMaterno.setText(this.modelo.getApMaternoUsuario());
+            this.vista.paneEmail.setText(this.modelo.getEmailUsuario());
+            this.vista.paneTelefono.setText(this.modelo.getTelefonoCelular());
+        } else {
+            JOptionPane.showMessageDialog(this.vista, "No se encontraron los datos del usuario");
+            LlenarTablaUsuarios();
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this.vista, "Debe ingresar un ID numérico válido");
+        this.vista.paneIdusuario.requestFocus();
+    }
+}
+//Fin del metodo buscar por ID
     //Metodo para llenar la tabla de usuarios
      public void LlenarTablaUsuarios(){
          this.vista.tablausuario.setModel(obtenerDatosUsuarios());

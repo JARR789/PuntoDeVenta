@@ -67,122 +67,89 @@ public class ControladorPanelRolUsuario {
         
     }
     //Metodo para registrar rol
-    public void registrarRol(){
-        //JOptionPane.showMessageDialog(this.vista, "Registrar Rol usuario");
-        
-        //Validar cajas de texto
-         if(validarCajasTexto()){
-            
-              
-        //Obtener los datos de la vista y agregarlos al modelo
-        this.modelo.setIdRolUsuario(Integer.parseInt(this.vista.paneIdRolUsuario.getText()));
-        this.modelo.setTipoRolUsuario(this.vista.paneTipoRolUsuario.getText());
-        this.modelo.setDescripcionRoLUsuario(this.vista.paneDesRolUsuario.getText());
-    
-        if (this.modelo.insertar()) {
-            JOptionPane.showMessageDialog(this.vista, "Los datos del rol de usuario se guardaron correctamente");
-            //Limpiar cajas de texto
-            limpiarCajasTexto();
-                    
-            //LLamar al metodo llenar tabla usuarios
-             LlenarTablaUsuarios();
-        
-        } else {
-             JOptionPane.showMessageDialog(this.vista, "Los datos del rol usuario NO se guardaron...");
-        }
-        
-        }else{
-            JOptionPane.showMessageDialog(this.vista, "Faltan capturar algunos datos");
-        }
-    }//Fin del metodo registrar
-    
-    //Metodo para editar rolusuario
-    public void editarRol(){
-    //Validar cajas de texto
-        if(validarCajasTexto()){
-            
-              
-        //Obtener los datos de la vista y agregarlos al modelo
-        this.modelo.setIdRolUsuario(Integer.parseInt(this.vista.paneIdRolUsuario.getText()));
-        this.modelo.setTipoRolUsuario(this.vista.paneTipoRolUsuario.getText());
-        this.modelo.setDescripcionRoLUsuario(this.vista.paneDesRolUsuario.getText());
-        
-        
-        if (this.modelo.modificar(this.modelo.getIdRolUsuario())) {
-            JOptionPane.showMessageDialog(this.vista, "Los datos del Rol usuario se modificaron correctamente");
-            //Limpiar cajas de texto
-            limpiarCajasTexto();
-        } else {
-             JOptionPane.showMessageDialog(this.vista, "Los datos del usuario NO se modificaron...");
-        }
-                
-        //LLamar al metodo llenar tabla usuarios
-        LlenarTablaUsuarios();
-        
-        }else{
-            JOptionPane.showMessageDialog(this.vista, "Faltan capturar algunos datos");
-        }
-        
-        
-    }//Fin del metodo editar rol
-    
-    //Metodo para eliminar rol usuario
-    public void eliminarRol(){
-        
-    if(!this.vista.paneIdRolUsuario.getText().trim().isEmpty()){
-            
-              
-        //Obtener los datos de la vista y agregarlos al modelo
-        this.modelo.setIdRolUsuario(Integer.parseInt(this.vista.paneIdRolUsuario.getText()));
+public void registrarRol(){
+    if(validarCajasTexto()){
+        try {
+            //Obtener los datos de la vista y agregarlos al modelo
+            this.modelo.setIdRolUsuario(Integer.parseInt(this.vista.paneIdRolUsuario.getText()));
+            this.modelo.setTipoRolUsuario(this.vista.paneTipoRolUsuario.getText());
+            this.modelo.setDescripcionRoLUsuario(this.vista.paneDesRolUsuario.getText());
 
-        if (this.modelo.eliminar(this.modelo.getIdRolUsuario())) {
-            JOptionPane.showMessageDialog(this.vista, "Los datos del Rol usuario se eliminaron correctamente");
-            //Limpiar cajas de texto
-            limpiarCajasTexto();
-              //LLamar al metodo llenar tabla usuarios
-               LlenarTablaUsuarios();
-        
-        } else {
-             JOptionPane.showMessageDialog(this.vista, "Los datos del Rol usuario NO se eliminaron...");
+            if (this.modelo.insertar()) {
+                JOptionPane.showMessageDialog(this.vista, "Los datos del rol de usuario se guardaron correctamente");
+                limpiarCajasTexto();
+                LlenarTablaUsuarios();
+            } else {
+                JOptionPane.showMessageDialog(this.vista, "Los datos del rol usuario NO se guardaron...");
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this.vista, "El ID debe ser un número entero.");
         }
-        
-    }else{
+    } else {
+        JOptionPane.showMessageDialog(this.vista, "Faltan capturar algunos datos");
+    }
+}
+
+//Metodo para editar rolusuario
+public void editarRol(){
+    if(validarCajasTexto()){
+        try {
+            this.modelo.setIdRolUsuario(Integer.parseInt(this.vista.paneIdRolUsuario.getText()));
+            this.modelo.setTipoRolUsuario(this.vista.paneTipoRolUsuario.getText());
+            this.modelo.setDescripcionRoLUsuario(this.vista.paneDesRolUsuario.getText());
+
+            if (this.modelo.modificar(this.modelo.getIdRolUsuario())) {
+                JOptionPane.showMessageDialog(this.vista, "Los datos del Rol usuario se modificaron correctamente");
+                limpiarCajasTexto();
+            } else {
+                JOptionPane.showMessageDialog(this.vista, "Los datos del usuario NO se modificaron...");
+            }
+            LlenarTablaUsuarios();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this.vista, "El ID debe ser un número entero.");
+        }
+    } else {
+        JOptionPane.showMessageDialog(this.vista, "Faltan capturar algunos datos");
+    }
+}
+
+//Metodo para eliminar rol usuario
+public void eliminarRol(){
+    if(!this.vista.paneIdRolUsuario.getText().trim().isEmpty()){
+        try {
+            this.modelo.setIdRolUsuario(Integer.parseInt(this.vista.paneIdRolUsuario.getText()));
+            if (this.modelo.eliminar(this.modelo.getIdRolUsuario())) {
+                JOptionPane.showMessageDialog(this.vista, "Los datos del Rol usuario se eliminaron correctamente");
+                limpiarCajasTexto();
+                LlenarTablaUsuarios();
+            } else {
+                JOptionPane.showMessageDialog(this.vista, "Los datos del Rol usuario NO se eliminaron...");
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this.vista, "El ID debe ser un número entero.");
+        }
+    } else {
         JOptionPane.showMessageDialog(this.vista, "SE DEBE DE CAPTURAR EL ID");
         this.vista.paneIdRolUsuario.requestFocus();
-                
-        //LLamar al metodo llenar tabla usuarios
         LlenarTablaUsuarios();
-        
     }
-        
-        
-    }//Fin del metodo eliminar rol
-    
-    public void buscarIdRol(){
-         //Obtener los datos de la vista y agregarlos al modelo
-         this.modelo.setIdRolUsuario(Integer.parseInt(this.vista.paneIdRolUsuario.getText()));
-         
-         if (this.modelo.BuscarPorId(this.modelo.getIdRolUsuario())) {
-             //Agregar los datos a las cajas de texto
-             this.vista.paneTipoRolUsuario.setText(this.modelo.getTipoRolUsuario());
-             this.vista.paneDesRolUsuario.setText(this.modelo.getDescripcionRoLUsuario());
-        
-         } else {
-             JOptionPane.showMessageDialog(this.vista, "No se encontraron los datos del Rol usuario");
-                     
-        //LLamar al metodo llenar tabla usuarios
-        LlenarTablaUsuarios();
-        
-         }
-         
-     }
-    
-        
-        
-        
-    
-    
-    
+}
+
+public void buscarIdRol(){
+    try {
+        this.modelo.setIdRolUsuario(Integer.parseInt(this.vista.paneIdRolUsuario.getText()));
+
+        if (this.modelo.BuscarPorId(this.modelo.getIdRolUsuario())) {
+            this.vista.paneTipoRolUsuario.setText(this.modelo.getTipoRolUsuario());
+            this.vista.paneDesRolUsuario.setText(this.modelo.getDescripcionRoLUsuario());
+        } else {
+            JOptionPane.showMessageDialog(this.vista, "No se encontraron los datos del Rol usuario");
+            LlenarTablaUsuarios();
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this.vista, "El ID debe ser un número entero.");
+    }
+}    
     
     //Metodo para llenar la tabla de usuarios
      public void LlenarTablaUsuarios(){

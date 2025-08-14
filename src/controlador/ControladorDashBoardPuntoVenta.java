@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import javax.swing.JOptionPane;
 import modelo.Pedido;
 import vista.panelDashBoardPuntoVenta;
 

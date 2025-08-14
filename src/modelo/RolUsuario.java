@@ -4,7 +4,6 @@
  */
 package modelo;
 
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -20,11 +19,8 @@ public class RolUsuario extends ConexionBD implements CRUDInterface {
     private int idRolUsuario;
     private String tipoRolUsuario;
     private String descripcionRoLUsuario;
-    private CallableStatement cstmt;
-    private ResultSet result;
     
-   //Constructor
-
+    //Constructor
     public RolUsuario() {
     }
 
@@ -34,222 +30,176 @@ public class RolUsuario extends ConexionBD implements CRUDInterface {
         this.descripcionRoLUsuario = descripcionRoLUsuario;
     }
     
-    //Metodos set y get
+    //Métodos set y get
+    public int getIdRolUsuario() { return idRolUsuario; }
+    public void setIdRolUsuario(int idRolUsuario) { this.idRolUsuario = idRolUsuario; }
+    public String getTipoRolUsuario() { return tipoRolUsuario; }
+    public void setTipoRolUsuario(String tipoRolUsuario) { this.tipoRolUsuario = tipoRolUsuario; }
+    public String getDescripcionRoLUsuario() { return descripcionRoLUsuario; }
+    public void setDescripcionRoLUsuario(String descripcionRoLUsuario) { this.descripcionRoLUsuario = descripcionRoLUsuario; }
 
-    public int getIdRolUsuario() {
-        return idRolUsuario;
-    }
-
-    public void setIdRolUsuario(int idRolUsuario) {
-        this.idRolUsuario = idRolUsuario;
-    }
-
-    public String getTipoRolUsuario() {
-        return tipoRolUsuario;
-    }
-
-    public void setTipoRolUsuario(String tipoRolUsuario) {
-        this.tipoRolUsuario = tipoRolUsuario;
-    }
-
-    public String getDescripcionRoLUsuario() {
-        return descripcionRoLUsuario;
-    }
-
-    public void setDescripcionRoLUsuario(String descripcionRoLUsuario) {
-        this.descripcionRoLUsuario = descripcionRoLUsuario;
-    }
-    //Metodo toString
-
+    //Método toString
     @Override
     public String toString() {
-        return "RolUsuario{" + "idRolUsuario=" + idRolUsuario + ", \n tipoRolUsuario=" + tipoRolUsuario + ", \n descripcionRoLUsuario=" + descripcionRoLUsuario + '}';
+        return "RolUsuario{" + "idRolUsuario=" + idRolUsuario + ", tipoRolUsuario=" + tipoRolUsuario + ", descripcionRoLUsuario=" + descripcionRoLUsuario + '}';
     }
 
     @Override
     public boolean insertar() {
-        if (super.openConectionBD()) {
-            try {
-              
-                //Llamar al procedimiento almacenado
-                this.cstmt=super.getConexion().prepareCall("call bd_sistema_login.sp_insertar_rol_usuario(?,?,?);");
-                this.cstmt.setInt(1, this.idRolUsuario);
-                this.cstmt.setString(2, this.tipoRolUsuario);
-                this.cstmt.setString(3, this.descripcionRoLUsuario);
-               
-                //Ejecutar el procedimiento almacenado
-                this.cstmt.execute();
-                //Cerrar conexion a la BD
-                this.cstmt.close();
-                super.getConexion().close();
-                
-             
-                
-                
-                return true;
-            } catch (SQLException ex) {
-               super.setMensajes("Error sql: " + ex.getMessage());
-            }
-        } else {
-        }  JOptionPane.showMessageDialog(null, super.getMensajes());
+        if (!super.openConectionBD()) {
+            JOptionPane.showMessageDialog(null, super.getMensajes());
+            return false;
+        }
+
+        String sql = "call bd_sistema_login.sp_insertar_rol_usuario(?,?,?)";
+
+        try (CallableStatement cstmt = super.getConexion().prepareCall(sql)) {
+            cstmt.setInt(1, this.idRolUsuario);
+            cstmt.setString(2, this.tipoRolUsuario);
+            cstmt.setString(3, this.descripcionRoLUsuario);
+
+            cstmt.execute();
+            return true;
+
+        } catch (SQLException ex) {
+            super.setMensajes("Error sql: " + ex.getMessage());
+        } catch (Exception ex) {
+            super.setMensajes("Error inesperado: " + ex.getMessage());
+        } finally {
+            try { super.getConexion().close(); } catch (SQLException e) { /* ignorar */ }
+        }
+
+        JOptionPane.showMessageDialog(null, super.getMensajes());
         return false;
-    }//Fin del metodo  insertar
-        
-    
+    }
 
     @Override
     public ArrayList<RolUsuario> buscar() {
-        ArrayList<RolUsuario> listaRolUsuarios = new ArrayList<RolUsuario>();
-        if (super.openConectionBD()) {
-            try {
-                //JOptionPane.showMessageDialog(null, super.getMensajes());
-                //Llamar al procedimiento almacenado
-                this.cstmt=super.getConexion().prepareCall("call bd_sistema_login.sp_buscar_rolsuario();");
-              
-                //  EJECUTAR CONSULTA
-                this.result=cstmt.executeQuery();
+        ArrayList<RolUsuario> listaRolUsuarios = new ArrayList<>();
 
-                while (this.result.next()) {
-                
-                RolUsuario rolusuario = new RolUsuario();
-                rolusuario.idRolUsuario = this.result.getInt(1);
-                rolusuario.tipoRolUsuario = this.result.getString(2);
-                rolusuario.descripcionRoLUsuario = this.result.getString(3);
+        if (!super.openConectionBD()) {
+            JOptionPane.showMessageDialog(null, super.getMensajes());
+            return listaRolUsuarios;
+        }
 
-                //Agregar el objeto usuario a la lista
-                
+        String sql = "call bd_sistema_login.sp_buscar_rolusuario()";
+
+        try (CallableStatement cstmt = super.getConexion().prepareCall(sql);
+             ResultSet result = cstmt.executeQuery()) {
+
+            while (result.next()) {
+                RolUsuario rolusuario = new RolUsuario(
+                        result.getInt(1),
+                        result.getString(2),
+                        result.getString(3)
+                );
                 listaRolUsuarios.add(rolusuario);
-
-
-                    
-                }
-   
-        
-                //Cerrar conexion a la BD
-                this.cstmt.close();
-                super.getConexion().close();
-                
-             
-                
-          
-            } catch (SQLException e) {
-               JOptionPane.showMessageDialog(null, e.getMessage());
             }
-        } else {
-           JOptionPane.showMessageDialog(null, super.getMensajes());
-        }  
+
+        } catch (SQLException ex) {
+            super.setMensajes("Error sql: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, super.getMensajes());
+        } catch (Exception ex) {
+            super.setMensajes("Error inesperado: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, super.getMensajes());
+        } finally {
+            try { super.getConexion().close(); } catch (SQLException e) { /* ignorar */ }
+        }
+
         return listaRolUsuarios;
-      
     }
 
-    
-        
-       
-    
-
     @Override
-    public boolean BuscarPorId (int id) {
-         this.idRolUsuario = id;
-         if (super.openConectionBD()) {
-            try {
-                //JOptionPane.showMessageDialog(null, super.getMensajes());
-                //Llamar al procedimiento almacenado
-                this.cstmt=super.getConexion().prepareCall("call bd_sistema_login.sp_buscar_rolusuario_id(?);");
-                this.cstmt.setInt(1, this.idRolUsuario);
-                this.result=cstmt.executeQuery();
+    public boolean BuscarPorId(int id) {
+        this.idRolUsuario = id;
 
-                while (this.result.next()) {
-                this.idRolUsuario = this.result.getInt(1);
-                this.tipoRolUsuario = this.result.getString(2);
-                this.descripcionRoLUsuario = this.result.getString(3);
-          
+        if (!super.openConectionBD()) {
+            JOptionPane.showMessageDialog(null, super.getMensajes());
+            return false;
+        }
 
+        String sql = "call bd_sistema_login.sp_buscar_rolusuario_id(?)";
 
-                    
+        try (CallableStatement cstmt = super.getConexion().prepareCall(sql)) {
+            cstmt.setInt(1, this.idRolUsuario);
+
+            try (ResultSet result = cstmt.executeQuery()) {
+                if (result.next()) {
+                    this.idRolUsuario = result.getInt(1);
+                    this.tipoRolUsuario = result.getString(2);
+                    this.descripcionRoLUsuario = result.getString(3);
+                    return true;
                 }
-   
-        
-                //Cerrar conexion a la BD
-                this.cstmt.close();
-                super.getConexion().close();
-                
-             
-                
-                
-                return true;
-            } catch (SQLException e) {
-               JOptionPane.showMessageDialog(null, e.getMessage());
             }
-        } else {
-           JOptionPane.showMessageDialog(null, super.getMensajes());
-        }  
-        return false;
-    }//Fin del metodo  buscar id
 
-        
-    
+        } catch (SQLException ex) {
+            super.setMensajes("Error sql: " + ex.getMessage());
+        } catch (Exception ex) {
+            super.setMensajes("Error inesperado: " + ex.getMessage());
+        } finally {
+            try { super.getConexion().close(); } catch (SQLException e) { /* ignorar */ }
+        }
+
+        JOptionPane.showMessageDialog(null, super.getMensajes());
+        return false;
+    }
 
     @Override
     public boolean modificar(int id) {
-        this.idRolUsuario=id;
-        if (super.openConectionBD()) {
-            try {
-                //JOptionPane.showMessageDialog(null, super.getMensajes());
-                //Llamar al procedimiento almacenado
-                this.cstmt=super.getConexion().prepareCall("call bd_sistema_login.sp_actualizar_RolUsuario(?,?,?);");
-                this.cstmt.setInt(1, this.idRolUsuario);
-                this.cstmt.setString(2, this.tipoRolUsuario);
-                this.cstmt.setString(3, this.descripcionRoLUsuario);
-       
-                //Ejecutar el procedimiento almacenado
-                this.cstmt.execute();
-                //Cerrar conexion a la BD
-                this.cstmt.close();
-                super.getConexion().close();
-                
-             
-                
-                
-                return true;
-            } catch (SQLException ex) {
-               super.setMensajes("Error sql: " + ex.getMessage());
-            }
-        } else {
-        }  JOptionPane.showMessageDialog(null, super.getMensajes());
+        this.idRolUsuario = id;
+
+        if (!super.openConectionBD()) {
+            JOptionPane.showMessageDialog(null, super.getMensajes());
+            return false;
+        }
+
+        String sql = "call bd_sistema_login.sp_actualizar_RolUsuario(?,?,?)";
+
+        try (CallableStatement cstmt = super.getConexion().prepareCall(sql)) {
+            cstmt.setInt(1, this.idRolUsuario);
+            cstmt.setString(2, this.tipoRolUsuario);
+            cstmt.setString(3, this.descripcionRoLUsuario);
+
+            cstmt.execute();
+            return true;
+
+        } catch (SQLException ex) {
+            super.setMensajes("Error sql: " + ex.getMessage());
+        } catch (Exception ex) {
+            super.setMensajes("Error inesperado: " + ex.getMessage());
+        } finally {
+            try { super.getConexion().close(); } catch (SQLException e) { /* ignorar */ }
+        }
+
+        JOptionPane.showMessageDialog(null, super.getMensajes());
         return false;
     }
-       
-    
 
     @Override
     public boolean eliminar(int id) {
-         this.idRolUsuario=id;
-        if (super.openConectionBD()) {
-            try {
-                //JOptionPane.showMessageDialog(null, super.getMensajes());
-                //Llamar al procedimiento almacenado
-                this.cstmt=super.getConexion().prepareCall("call bd_sistema_login.sp_eliminar_rolusuario(?);");
-                this.cstmt.setInt(1, this.idRolUsuario);
-                //Ejecutar el procedimiento almacenado
-                this.cstmt.execute();
-                //Cerrar conexion a la BD
-                this.cstmt.close();
-                super.getConexion().close();
-                
-             
-                
-                
-                return true;
-            } catch (SQLException ex) {
-               super.setMensajes("Error sql: " + ex.getMessage());
-            }
-        } else {
-        }  JOptionPane.showMessageDialog(null, super.getMensajes());
+        this.idRolUsuario = id;
+
+        if (!super.openConectionBD()) {
+            JOptionPane.showMessageDialog(null, super.getMensajes());
+            return false;
+        }
+
+        String sql = "call bd_sistema_login.sp_eliminar_rolusuario(?)";
+
+        try (CallableStatement cstmt = super.getConexion().prepareCall(sql)) {
+            cstmt.setInt(1, this.idRolUsuario);
+            cstmt.execute();
+            return true;
+
+        } catch (SQLException ex) {
+            super.setMensajes("Error sql: " + ex.getMessage());
+        } catch (Exception ex) {
+            super.setMensajes("Error inesperado: " + ex.getMessage());
+        } finally {
+            try { super.getConexion().close(); } catch (SQLException e) { /* ignorar */ }
+        }
+
+        JOptionPane.showMessageDialog(null, super.getMensajes());
         return false;
-        
     }
-
-    
-    
 }
-
