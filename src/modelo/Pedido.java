@@ -15,27 +15,27 @@ import java.sql.ResultSet;
  *
  * @author aurit
  */
-public class Pedido extends ConexionBD implements CRUDInterface  {
+public class Pedido extends ConexionBD {
     //Atributos
     private int idProducto;
     private String CodigoProducto;
     private String  NombreProducto;
-    private String ExistenciaProducto;
+    private String CantidadProducto;
     private String PrecioProducto;
-    private String DescripcionProducto;
+    private String PreFinProducto;
       private CallableStatement cstmt;
     private ResultSet result;
 
     public Pedido() {
     }
 
-    public Pedido(int idProducto, String CodigoProducto, String NombreProducto, String ExistenciaProducto, String PrecioProducto, String DescripcionProducto) {
+    public Pedido(int idProducto, String CodigoProducto, String NombreProducto, String CantidadProducto, String PrecioProducto, String PreFinProducto) {
         this.idProducto = idProducto;
         this.CodigoProducto = CodigoProducto;
         this.NombreProducto = NombreProducto;
-        this.ExistenciaProducto = ExistenciaProducto;
+        this.CantidadProducto = CantidadProducto;
         this.PrecioProducto = PrecioProducto;
-        this.DescripcionProducto = DescripcionProducto;
+        this.PreFinProducto = PreFinProducto;
     }
 
     public int getIdProducto() {
@@ -62,12 +62,12 @@ public class Pedido extends ConexionBD implements CRUDInterface  {
         this.NombreProducto = NombreProducto;
     }
 
-    public String getExistenciaProducto() {
-        return ExistenciaProducto;
+    public String getCantidadProducto() {
+        return CantidadProducto;
     }
 
-    public void setExistenciaProducto(String ExistenciaProducto) {
-        this.ExistenciaProducto = ExistenciaProducto;
+    public void setCantidadProducto(String CantidadProducto) {
+        this.CantidadProducto = CantidadProducto;
     }
 
     public String getPrecioProducto() {
@@ -78,37 +78,30 @@ public class Pedido extends ConexionBD implements CRUDInterface  {
         this.PrecioProducto = PrecioProducto;
     }
 
-    public String getDescripcionProducto() {
-        return DescripcionProducto;
+    public String getPreFinProducto() {
+        return PreFinProducto;
     }
 
     public void setDescripcionProducto(String DescripcionProducto) {
-        this.DescripcionProducto = DescripcionProducto;
+        this.PreFinProducto = DescripcionProducto;
     }
 
     @Override
     public String toString() {
-        return "Pedido{" + "idProducto=" + idProducto + ", CodigoProducto=" + CodigoProducto + ", NombreProducto=" + NombreProducto + ", ExistenciaProducto=" + ExistenciaProducto + ", PrecioProducto=" + PrecioProducto + ", DescripcionProducto=" + DescripcionProducto + '}';
+        return "Pedido{" + "idProducto=" + idProducto + ", CodigoProducto=" + CodigoProducto + ", NombreProducto=" + NombreProducto + ", CantidadProducto=" + CantidadProducto + ", PrecioProducto=" + PrecioProducto + ", PreFinProducto=" + PreFinProducto + '}';
     }
     
     
 
-@Override
-public boolean insertar() {
+public boolean vaciarTabla () {
     if (!super.openConectionBD()) {
         JOptionPane.showMessageDialog(null, super.getMensajes());
         return false;
     }
 
-    String sql = "{call sp_insertar_producto(?, ?, ?, ?, ?)}"; // ajusta con tu procedimiento
+    String sql = "call bd_sistema_login.VaciarPedido();"; // ajusta con tu procedimiento
 
     try (CallableStatement cstmt = super.getConexion().prepareCall(sql)) {
-        cstmt.setString(1, this.CodigoProducto);
-        cstmt.setString(2, this.DescripcionProducto);
-        cstmt.setString(3, this.ExistenciaProducto);
-        cstmt.setString(4, this.NombreProducto);
-        cstmt.setString(5, this.PrecioProducto);
-
         cstmt.execute();
         return true;
     } catch (SQLException ex) {
@@ -123,16 +116,15 @@ public boolean insertar() {
     return false;
 }
 
-@Override
 public ArrayList<Pedido> buscar() {
     ArrayList<Pedido> listaPedido = new ArrayList<>();
 
-    if (!super.openConectionBD()) {
-        JOptionPane.showMessageDialog(null, super.getMensajes());
-        return listaPedido;
-    }
+        if (!super.openConectionBD()) {
+            JOptionPane.showMessageDialog(null, super.getMensajes());
+            return listaPedido;
+        }
 
-    String sql = "{call sp_buscar_productos()}"; // ajusta con tu procedimiento
+        String sql = "call bd_sistema_login.sp_buscar_pedido();";
 
     try (CallableStatement cstmt = super.getConexion().prepareCall(sql);
          ResultSet result = cstmt.executeQuery()) {
@@ -141,10 +133,10 @@ public ArrayList<Pedido> buscar() {
             Pedido pedido = new Pedido(
                 result.getInt(1),
                 result.getString(2),
-                result.getString(5),
+                result.getString(3),
                 result.getString(4),
-                result.getString(6),
-                result.getString(3)
+                result.getString(5),
+                result.getString(6)
             );
             listaPedido.add(pedido);
         }
@@ -161,30 +153,53 @@ public ArrayList<Pedido> buscar() {
 
     return listaPedido;
 }
+public boolean Agregar () {
+    if (!super.openConectionBD()) {
+        JOptionPane.showMessageDialog(null, super.getMensajes());
+        return false;
+    }
 
-@Override
+    String sql = "call bd_sistema_login.agregar_pedido(?,?);"; // ajusta con tu procedimiento
+
+    try (CallableStatement cstmt = super.getConexion().prepareCall(sql)) {
+        cstmt.setString(1, this.CodigoProducto);
+        cstmt.setString(2, this.CantidadProducto);
+        
+        cstmt.execute();
+        return true;
+    } catch (SQLException ex) {
+        super.setMensajes("Error de base de datos: " + ex.getMessage());
+    } catch (Exception ex) {
+        super.setMensajes("Error inesperado: " + ex.getMessage());
+    } finally {
+        try { super.getConexion().close(); } catch (SQLException e) { /* ignorar */ }
+    }
+
+    JOptionPane.showMessageDialog(null, super.getMensajes());
+    return false;
+}
+
 public boolean BuscarPorId(int id) {
-    this.idProducto = id;
+this.idProducto = id;
 
     if (!super.openConectionBD()) {
         JOptionPane.showMessageDialog(null, super.getMensajes());
         return false;
     }
 
-    String sql = "{call sp_buscar_producto_por_id(?)}"; // ajusta con tu procedimiento
+    String sql = "call bd_sistema_login.sp_buscarProdId(?);"; // ajusta con tu procedimiento
 
     try (CallableStatement cstmt = super.getConexion().prepareCall(sql)) {
-        cstmt.setInt(1, this.idProducto);
-
+        cstmt.setInt(1, this.idProducto);   
+        cstmt.execute();
         try (ResultSet result = cstmt.executeQuery()) {
             if (result.next()) {
-                this.idProducto = result.getInt(1);
-                this.CodigoProducto = result.getString(2);
-                this.DescripcionProducto = result.getString(3);
-                this.ExistenciaProducto = result.getString(4);
-                this.NombreProducto = result.getString(5);
-                this.PrecioProducto = result.getString(6);
+                // Obtener los valores del ResultSet
+                this.CodigoProducto = result.getString("codigoProducto"); // nombre exacto de la columna en la BD
+                this.CantidadProducto = result.getString("cantidad"); // nombre exacto de la columna en la BD
                 return true;
+            } else {
+                return false; // no se encontró el registro
             }
         }
 
@@ -200,28 +215,20 @@ public boolean BuscarPorId(int id) {
     return false;
 }
 
-@Override
-public boolean modificar(int id) {
-    this.idProducto = id;
-
+public boolean eliminarCod () {
     if (!super.openConectionBD()) {
         JOptionPane.showMessageDialog(null, super.getMensajes());
         return false;
     }
 
-    String sql = "{call sp_modificar_producto(?, ?, ?, ?, ?, ?)}"; // ajusta con tu procedimiento
+    String sql = "call bd_sistema_login.sp_quitar_a_pedido(?,?);"; // ajusta con tu procedimiento
 
     try (CallableStatement cstmt = super.getConexion().prepareCall(sql)) {
-        cstmt.setInt(1, this.idProducto);
-        cstmt.setString(2, this.CodigoProducto);
-        cstmt.setString(3, this.DescripcionProducto);
-        cstmt.setString(4, this.ExistenciaProducto);
-        cstmt.setString(5, this.NombreProducto);
-        cstmt.setString(6, this.PrecioProducto);
-
+        cstmt.setString(1, this.CodigoProducto);
+        cstmt.setString(2, this.CantidadProducto);
+        
         cstmt.execute();
         return true;
-
     } catch (SQLException ex) {
         super.setMensajes("Error de base de datos: " + ex.getMessage());
     } catch (Exception ex) {
@@ -233,9 +240,7 @@ public boolean modificar(int id) {
     JOptionPane.showMessageDialog(null, super.getMensajes());
     return false;
 }
-
-@Override
-public boolean eliminar(int id) {
+public boolean eliminarid(int id) {
     this.idProducto = id;
 
     if (!super.openConectionBD()) {
@@ -243,7 +248,7 @@ public boolean eliminar(int id) {
         return false;
     }
 
-    String sql = "{call sp_eliminar_producto(?)}"; // ajusta con tu procedimiento
+    String sql = "call bd_sistema_login.sp_eliminar_pedidoid(?);"; // ajusta con tu procedimiento
 
     try (CallableStatement cstmt = super.getConexion().prepareCall(sql)) {
         cstmt.setInt(1, this.idProducto);

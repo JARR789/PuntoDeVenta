@@ -36,8 +36,25 @@ public class ControladorDashBoardAdmin {
     //Manejador eventos
     public void manejadorEventos(){
         this.vista.btnUsuarios.addActionListener(e->mostrarPanelUsuarios());
-        this.vista.btnProductos.addActionListener(e->mostrarPanelRolUsuario());
+        this.vista.btnRolUsuarios.addActionListener(e->mostrarPanelRolUsuario());
+        this.vista.btnProductos.addActionListener(e->mostrarPanelProducto());
     }
+    //Mostrar panel productos
+    public void mostrarPanelProducto(){
+        //Crear el objeto del controlador del panel usuarios
+        ControladorPanelProducto controladorPanelProducto=new ControladorPanelProducto();
+        
+        controladorPanelProducto.getVista().setSize(800,560);
+        controladorPanelProducto.getVista().setLocation(0,0);
+        
+        //Agregar el panel usuario al panel controlador
+        this.vista.panelContenedor.removeAll();
+        this.vista.panelContenedor.add(controladorPanelProducto.getVista());
+        this.vista.panelContenedor.revalidate();
+        this.vista.panelContenedor.repaint();
+        
+    }
+    
     //Metodo para mostrar el panel usuarios
     public void mostrarPanelUsuarios(){
         //Crear el objeto del controlador del panel usuarios
@@ -74,6 +91,14 @@ public class ControladorDashBoardAdmin {
         ControladorDashBoardAdmin controlador=new ControladorDashBoardAdmin();
         controlador.vista.setVisible(true);
         controlador.vista.setLocationRelativeTo(null);
+    }
+
+    public void setVisible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setLocationRelativeTo(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

@@ -21,13 +21,18 @@ public class ConexionBD {
     private String mensajes;
     
     //Constructor
-
     public ConexionBD() {
-           this.driverBD="com.mysql.cj.jdbc.Driver";
-        this.UserBD="administrador";
-        this.passwordBD="1234567+";
-        this.urlBD="jdbc:mysql://192.168.137.1:3306/bd_sistema_login";
+        this.driverBD="com.mysql.cj.jdbc.Driver";
+        this.UserBD="root";
+        this.passwordBD="123456";
+        this.urlBD="jdbc:mysql://localhost:3306/bd_sistema_login";
     }
+//    public ConexionBD() {
+//           this.driverBD="com.mysql.cj.jdbc.Driver";
+//        this.UserBD="administrador";
+//        this.passwordBD="1234567+";
+//        this.urlBD="jdbc:mysql://192.168.137.1:3306/bd_sistema_login";
+//    }
 
     public ConexionBD(String driverBD, String UserBD, String passwordBD, String urlBD) {
         this.driverBD = driverBD;

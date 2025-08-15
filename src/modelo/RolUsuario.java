@@ -82,7 +82,7 @@ public class RolUsuario extends ConexionBD implements CRUDInterface {
             return listaRolUsuarios;
         }
 
-        String sql = "call bd_sistema_login.sp_buscar_rolusuario()";
+        String sql = "call bd_sistema_login.sp_buscar_rolsuario()";
 
         try (CallableStatement cstmt = super.getConexion().prepareCall(sql);
              ResultSet result = cstmt.executeQuery()) {

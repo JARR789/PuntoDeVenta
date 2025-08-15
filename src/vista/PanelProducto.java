@@ -27,6 +27,8 @@ public class PanelProducto extends javax.swing.JPanel {
     private void initComponents() {
 
         btnRegistro = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnRegistroProducto = new javax.swing.JButton();
@@ -39,21 +41,27 @@ public class PanelProducto extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        paneIIdProducto = new javax.swing.JTextField();
+        panelIdProducto = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        paneNombreProducto = new javax.swing.JTextField();
+        panelNombreProducto = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         panelPrecio = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        paneDescripcion1 = new javax.swing.JTextField();
+        panelDescripcion = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        panelExistencia1 = new javax.swing.JTextField();
+        panelExistencia = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        PanelCodigo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaProductos = new javax.swing.JTable();
 
         btnRegistro.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 18)); // NOI18N
         btnRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/registro.png"))); // NOI18N
         btnRegistro.setText("Registro");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
 
         setMaximumSize(new java.awt.Dimension(800, 560));
         setPreferredSize(new java.awt.Dimension(800, 560));
@@ -126,31 +134,31 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel2.setText("ID Producto");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        paneIIdProducto.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
-        paneIIdProducto.addActionListener(new java.awt.event.ActionListener() {
+        panelIdProducto.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
+        panelIdProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                paneIIdProductoActionPerformed(evt);
+                panelIdProductoActionPerformed(evt);
             }
         });
-        jPanel2.add(paneIIdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 160, -1));
+        jPanel2.add(panelIdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 160, -1));
 
         jLabel4.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 255, 255));
-        jLabel4.setText("Nombre");
+        jLabel4.setText("Codigo");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
-        paneNombreProducto.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
-        paneNombreProducto.addActionListener(new java.awt.event.ActionListener() {
+        panelNombreProducto.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
+        panelNombreProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                paneNombreProductoActionPerformed(evt);
+                panelNombreProductoActionPerformed(evt);
             }
         });
-        jPanel2.add(paneNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 160, -1));
+        jPanel2.add(panelNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 160, -1));
 
         jLabel5.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 255, 255));
         jLabel5.setText("Descripcion");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
         panelPrecio.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
         panelPrecio.addActionListener(new java.awt.event.ActionListener() {
@@ -158,48 +166,61 @@ public class PanelProducto extends javax.swing.JPanel {
                 panelPrecioActionPerformed(evt);
             }
         });
-        jPanel2.add(panelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 160, -1));
+        jPanel2.add(panelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 255, 255));
         jLabel7.setText("Precio");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
-        paneDescripcion1.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
-        paneDescripcion1.addActionListener(new java.awt.event.ActionListener() {
+        panelDescripcion.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
+        panelDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                paneDescripcion1ActionPerformed(evt);
+                panelDescripcionActionPerformed(evt);
             }
         });
-        jPanel2.add(paneDescripcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 160, -1));
+        jPanel2.add(panelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 160, -1));
 
         jLabel8.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 255, 255));
         jLabel8.setText("Existencia");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
-        panelExistencia1.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
-        panelExistencia1.addActionListener(new java.awt.event.ActionListener() {
+        panelExistencia.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
+        panelExistencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                panelExistencia1ActionPerformed(evt);
+                panelExistenciaActionPerformed(evt);
             }
         });
-        jPanel2.add(panelExistencia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 160, -1));
+        jPanel2.add(panelExistencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 160, -1));
+
+        jLabel6.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 255, 255));
+        jLabel6.setText("Nombre");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
+        PanelCodigo.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
+        PanelCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PanelCodigoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(PanelCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 160, -1));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 200, 440));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nombre", "Descripcion", "Existencia", "Precio"
+                "Id", "Codigo", "Nombre", "Existencia", "Precio", "Descripcion"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaProductos);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 600, 440));
     }// </editor-fold>//GEN-END:initComponents
@@ -212,28 +233,33 @@ public class PanelProducto extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarProductoActionPerformed
 
-    private void paneIIdProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paneIIdProductoActionPerformed
+    private void panelIdProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panelIdProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_paneIIdProductoActionPerformed
+    }//GEN-LAST:event_panelIdProductoActionPerformed
 
-    private void paneNombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paneNombreProductoActionPerformed
+    private void panelNombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panelNombreProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_paneNombreProductoActionPerformed
+    }//GEN-LAST:event_panelNombreProductoActionPerformed
 
     private void panelPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panelPrecioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_panelPrecioActionPerformed
 
-    private void paneDescripcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paneDescripcion1ActionPerformed
+    private void panelDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panelDescripcionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_paneDescripcion1ActionPerformed
+    }//GEN-LAST:event_panelDescripcionActionPerformed
 
-    private void panelExistencia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panelExistencia1ActionPerformed
+    private void panelExistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_panelExistenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_panelExistencia1ActionPerformed
+    }//GEN-LAST:event_panelExistenciaActionPerformed
+
+    private void PanelCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PanelCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PanelCodigoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField PanelCodigo;
     public javax.swing.JButton btnBuscarProducto;
     public javax.swing.JButton btnEditarProducto;
     public javax.swing.JButton btnEliminarProducto;
@@ -245,18 +271,21 @@ public class PanelProducto extends javax.swing.JPanel {
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel4;
     public javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel6;
     public javax.swing.JLabel jLabel7;
     public javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    public javax.swing.JTextField paneDescripcion1;
-    public javax.swing.JTextField paneIIdProducto;
-    public javax.swing.JTextField paneNombreProducto;
-    public javax.swing.JTextField panelExistencia1;
+    private javax.swing.JTextArea jTextArea1;
+    public javax.swing.JTextField panelDescripcion;
+    public javax.swing.JTextField panelExistencia;
+    public javax.swing.JTextField panelIdProducto;
+    public javax.swing.JTextField panelNombreProducto;
     public javax.swing.JTextField panelPrecio;
+    public javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
 }

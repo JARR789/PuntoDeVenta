@@ -10,6 +10,7 @@ import vista.VistaDashBoardAdmin;
 import vista.Vistalogin;
 import vista.panelDashBoardPuntoVenta;
 
+
 /**
  *
  * @author J.A.R.R
@@ -58,8 +59,8 @@ public void iniciarSesion() {
 
         // Abrir ventana según el rol
         if ("cliente".equalsIgnoreCase(rol)) {
-            panelDashBoardPuntoVenta vistaCliente = new panelDashBoardPuntoVenta();
-            vistaCliente.setVisible(true);
+            ControladorPedido vistaCliente = new ControladorPedido();
+            vistaCliente.getVista().setVisible(true);
         } else if ("admin".equalsIgnoreCase(rol) || "administrador".equalsIgnoreCase(rol)) {
             ControladorDashBoardAdmin vistaDashBoardAdmin = new ControladorDashBoardAdmin();
             vistaDashBoardAdmin.getVista().setVisible(true);

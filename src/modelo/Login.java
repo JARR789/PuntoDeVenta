@@ -129,7 +129,7 @@ public class Login extends ConexionBD {
                 while (this.result.next()){
                     existeUsuario=true;
                     //agregar los datos de la consulta a los atributos del RolUsuario
-                    this.getRolUsuario().setTipoRolUsuario(this.result.getString("tipoRolUsuario"));
+                    this.getRolUsuario().setTipoRolUsuario(this.result.getString("tipoRolUsaurio"));
                 }
                 //cerrar conexion
                 this.cstm.close();

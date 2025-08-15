@@ -1,17 +1,17 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
 
 /**
  *
- * @author aurit
+ * @author J.A.R.R
  */
-public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
+public class panelDashBoardPuntoVenta extends javax.swing.JFrame {
 
     /**
-     * Creates new form VistaDashBoardPuntoVenta
+     * Creates new form panelDashBoardPuntoVenta2
      */
     public panelDashBoardPuntoVenta() {
         initComponents();
@@ -26,103 +26,171 @@ public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelMenu = new javax.swing.JPanel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaproducto = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
         txtSubtotal = new javax.swing.JTextField();
         txtTola = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtbuscraid = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        panelEnca = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        panelMenu1 = new javax.swing.JPanel();
+        panelMenu = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
+        btnEliminarId = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtCantidad = new javax.swing.JTextField();
+        txtProdId = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        BuscarIdbtn = new javax.swing.JButton();
+        Borrarporidbtn = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        ticketbtn = new javax.swing.JButton();
+        txtIVA = new javax.swing.JTextField();
+        panelEnca = new javax.swing.JPanel();
         btnAgregarproducto = new javax.swing.JButton();
-        btnCancelarVenta = new javax.swing.JButton();
         BorrarProductobtn = new javax.swing.JButton();
         NuevaVentabtn = new javax.swing.JButton();
-        Editarbtn = new javax.swing.JButton();
-        btnSalirVenta = new javax.swing.JButton();
-        ticketbtn = new javax.swing.JButton();
-        txtIVA1 = new javax.swing.JTextField();
-        BuscarIdbtn = new javax.swing.JButton();
-        FinalizarVentaBTN = new javax.swing.JButton();
 
-        panelMenu.setBackground(new java.awt.Color(102, 102, 255));
-        panelMenu.setMinimumSize(new java.awt.Dimension(170, 160));
-        panelMenu.setPreferredSize(new java.awt.Dimension(224, 640));
-        panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jSeparator2.setPreferredSize(new java.awt.Dimension(200, 10));
-        panelMenu.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, 10));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logmai.png"))); // NOI18N
-        panelMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
-
-        tablaproducto.setBackground(new java.awt.Color(102, 102, 102));
+        tablaproducto.setBackground(new java.awt.Color(255, 255, 255));
         tablaproducto.setForeground(new java.awt.Color(102, 102, 102));
         tablaproducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Codigo", "Nombre ", "Cantidad", "Precio", "Precio Finail"
             }
         ));
         jScrollPane1.setViewportView(tablaproducto);
 
-        jLabel4.setText("Buscar producto por id:");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 830, 340));
 
         txtSubtotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSubtotalActionPerformed(evt);
             }
         });
+        getContentPane().add(txtSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 510, 126, -1));
 
         txtTola.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTolaActionPerformed(evt);
             }
         });
+        getContentPane().add(txtTola, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 502, 137, 30));
 
-        jLabel2.setText("I.V.A");
+        panelMenu.setBackground(new java.awt.Color(51, 51, 255));
+        panelMenu.setMinimumSize(new java.awt.Dimension(170, 160));
+        panelMenu.setPreferredSize(new java.awt.Dimension(224, 640));
+        panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtbuscraid.addActionListener(new java.awt.event.ActionListener() {
+        jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
+        panelMenu.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, 10));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logmai.png"))); // NOI18N
+        panelMenu.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+
+        btnEliminarId.setBackground(new java.awt.Color(51, 51, 51));
+        btnEliminarId.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/minecraft_logo_icon_168099 (2).png"))); // NOI18N
+        btnEliminarId.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 5, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel8.setText("Id del Producto");
+        btnEliminarId.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel10.setText("Cantidad");
+        btnEliminarId.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+
+        txtCantidad.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
+        txtCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbuscraidActionPerformed(evt);
+                txtCantidadActionPerformed(evt);
             }
         });
+        btnEliminarId.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 180, -1));
+
+        txtProdId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProdIdActionPerformed(evt);
+            }
+        });
+        btnEliminarId.add(txtProdId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 180, -1));
+
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoActionPerformed(evt);
+            }
+        });
+        btnEliminarId.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 180, -1));
+
+        jLabel11.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel11.setText("Codigo Producto");
+        btnEliminarId.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        BuscarIdbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/buscar.png"))); // NOI18N
+        BuscarIdbtn.setText("Buscar por id");
+        BuscarIdbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarIdbtnActionPerformed(evt);
+            }
+        });
+        btnEliminarId.add(BuscarIdbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 150, -1));
+
+        Borrarporidbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/eliminar.png"))); // NOI18N
+        Borrarporidbtn.setText("Eliminar por id");
+        Borrarporidbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BorrarporidbtnActionPerformed(evt);
+            }
+        });
+        btnEliminarId.add(Borrarporidbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 150, -1));
+
+        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarId.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 200, 10));
+
+        panelMenu.add(btnEliminarId, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 230, 490));
+
+        getContentPane().add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel2.setText("I.V.A");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 468, 38, -1));
 
         jLabel3.setText("TOTAL");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 550, -1, -1));
 
         jLabel1.setText("Subtotal");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(549, 502, 76, 30));
+
+        ticketbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/factura.png"))); // NOI18N
+        ticketbtn.setText("Generar Ticket");
+        getContentPane().add(ticketbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 465, -1, -1));
+
+        txtIVA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIVAActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtIVA, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 460, 126, -1));
 
         panelEnca.setBackground(new java.awt.Color(0, 51, 102));
         panelEnca.setPreferredSize(new java.awt.Dimension(800, 80));
         panelEnca.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/maigra.png"))); // NOI18N
-        panelEnca.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 270, 50));
-
-        panelMenu1.setBackground(new java.awt.Color(51, 51, 255));
-        panelMenu1.setMinimumSize(new java.awt.Dimension(170, 160));
-        panelMenu1.setPreferredSize(new java.awt.Dimension(224, 640));
-        panelMenu1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
-        panelMenu1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, 10));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logmai.png"))); // NOI18N
-        panelMenu1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
         btnAgregarproducto.setBackground(new java.awt.Color(102, 102, 255));
         btnAgregarproducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/registro.png"))); // NOI18N
@@ -132,17 +200,7 @@ public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
                 btnAgregarproductoActionPerformed(evt);
             }
         });
-        panelMenu1.add(btnAgregarproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 160, -1));
-
-        btnCancelarVenta.setBackground(new java.awt.Color(102, 102, 255));
-        btnCancelarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/cancelar.png"))); // NOI18N
-        btnCancelarVenta.setText("Cancelar");
-        btnCancelarVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarVentaActionPerformed(evt);
-            }
-        });
-        panelMenu1.add(btnCancelarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 160, -1));
+        panelEnca.add(btnAgregarproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 170, -1));
 
         BorrarProductobtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/eliminar.png"))); // NOI18N
         BorrarProductobtn.setText("Borrar");
@@ -151,205 +209,131 @@ public class panelDashBoardPuntoVenta extends javax.swing.JPanel {
                 BorrarProductobtnActionPerformed(evt);
             }
         });
-        panelMenu1.add(BorrarProductobtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 160, -1));
+        panelEnca.add(BorrarProductobtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 170, -1));
 
         NuevaVentabtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/nuevo.png"))); // NOI18N
-        NuevaVentabtn.setText("Nuevo");
+        NuevaVentabtn.setText("Nuevo Pedido");
         NuevaVentabtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NuevaVentabtnActionPerformed(evt);
             }
         });
-        panelMenu1.add(NuevaVentabtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 160, -1));
+        panelEnca.add(NuevaVentabtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 170, -1));
 
-        Editarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/editar.png"))); // NOI18N
-        Editarbtn.setText("Editar");
-        Editarbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditarbtnActionPerformed(evt);
-            }
-        });
-        panelMenu1.add(Editarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 160, -1));
+        getContentPane().add(panelEnca, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 850, -1));
 
-        btnSalirVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/login.png"))); // NOI18N
-        btnSalirVenta.setText("Salir");
-        btnSalirVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirVentaActionPerformed(evt);
-            }
-        });
-        panelMenu1.add(btnSalirVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 160, -1));
-
-        ticketbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/factura.png"))); // NOI18N
-        ticketbtn.setText("Generar Ticket");
-
-        txtIVA1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIVA1ActionPerformed(evt);
-            }
-        });
-
-        BuscarIdbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/buscar.png"))); // NOI18N
-
-        FinalizarVentaBTN.setText("Finalizar");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelEnca, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(ticketbtn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(FinalizarVentaBTN)))
-                        .addGap(143, 143, 143)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(193, 193, 193))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
-                                .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(41, 41, 41)
-                        .addComponent(txtTola, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 91, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtbuscraid, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BuscarIdbtn)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(134, 134, 134))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(673, Short.MAX_VALUE)
-                    .addComponent(txtIVA1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(259, 259, 259)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelEnca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(BuscarIdbtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTola, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addGap(74, 74, 74))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtbuscraid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(133, 133, 133)
-                        .addComponent(ticketbtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(FinalizarVentaBTN)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addComponent(panelMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(472, Short.MAX_VALUE)
-                    .addComponent(txtIVA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(146, 146, 146)))
-        );
+        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSalirVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirVentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSalirVentaActionPerformed
-
-    private void NuevaVentabtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevaVentabtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NuevaVentabtnActionPerformed
-
-    private void BorrarProductobtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarProductobtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BorrarProductobtnActionPerformed
-
-    private void EditarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarbtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EditarbtnActionPerformed
-
-    private void btnAgregarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarproductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarproductoActionPerformed
-
-    private void txtTolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTolaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTolaActionPerformed
-
-    private void txtbuscraidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscraidActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtbuscraidActionPerformed
 
     private void txtSubtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubtotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSubtotalActionPerformed
 
-    private void btnCancelarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarVentaActionPerformed
+    private void txtTolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTolaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarVentaActionPerformed
+    }//GEN-LAST:event_txtTolaActionPerformed
 
-    private void txtIVA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIVA1ActionPerformed
+    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIVA1ActionPerformed
+    }//GEN-LAST:event_txtCantidadActionPerformed
 
+    private void txtProdIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProdIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProdIdActionPerformed
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
+
+    private void BuscarIdbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarIdbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BuscarIdbtnActionPerformed
+
+    private void BorrarporidbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarporidbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BorrarporidbtnActionPerformed
+
+    private void btnAgregarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarproductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarproductoActionPerformed
+
+    private void BorrarProductobtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarProductobtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BorrarProductobtnActionPerformed
+
+    private void NuevaVentabtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevaVentabtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NuevaVentabtnActionPerformed
+
+    private void txtIVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIVAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIVAActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(panelDashBoardPuntoVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(panelDashBoardPuntoVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(panelDashBoardPuntoVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(panelDashBoardPuntoVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new panelDashBoardPuntoVenta().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton BorrarProductobtn;
+    public javax.swing.JButton Borrarporidbtn;
     public javax.swing.JButton BuscarIdbtn;
-    public javax.swing.JButton Editarbtn;
-    public javax.swing.JButton FinalizarVentaBTN;
-    private javax.swing.JButton NuevaVentabtn;
+    public javax.swing.JButton NuevaVentabtn;
     public javax.swing.JButton btnAgregarproducto;
-    public javax.swing.JButton btnCancelarVenta;
-    public javax.swing.JButton btnSalirVenta;
+    private javax.swing.JPanel btnEliminarId;
     private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel10;
+    public javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    public javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JPanel panelEnca;
     private javax.swing.JPanel panelMenu;
-    private javax.swing.JPanel panelMenu1;
     public javax.swing.JTable tablaproducto;
     public javax.swing.JButton ticketbtn;
-    public javax.swing.JTextField txtIVA1;
+    public javax.swing.JTextField txtCantidad;
+    public javax.swing.JTextField txtCodigo;
+    public javax.swing.JTextField txtIVA;
+    public javax.swing.JTextField txtProdId;
     public javax.swing.JTextField txtSubtotal;
     public javax.swing.JTextField txtTola;
-    public javax.swing.JTextField txtbuscraid;
     // End of variables declaration//GEN-END:variables
 }
